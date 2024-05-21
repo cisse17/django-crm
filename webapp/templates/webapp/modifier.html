@@ -1,0 +1,45 @@
+{% extends 'webapp/base.html'%} 
+
+{% load crispy_forms_tags %}
+{% block content %}
+<br>
+<div class="container bg-light shadow-md p-5 form-register">
+    <h3>Modifier les informations </h3>
+    
+    <h6> Modifier les enregistrements suivants</h6>
+    <hr>
+    <br>
+
+    <form method="POST" autocomplete="off">
+
+        {% csrf_token %}
+
+        <!-- {{ form|crispy }} -->
+        {{ form.prenom|as_crispy_field }}
+        <br>
+        {{ form.nom|as_crispy_field }}
+        <br>
+        {{ form.email|as_crispy_field }}
+        <br>
+        {{ form.telephone|as_crispy_field }}
+        <br>
+        {{ form.adresse|as_crispy_field }}
+        <br>
+        {{ form.ville|as_crispy_field }}
+        <br>
+        {{ form.province|as_crispy_field }}
+        <br>
+        {{ form.pays|as_crispy_field }}
+        <br>
+        <button type="submit" class="btn btn-info text-white">
+            Modifier &nbsp; <i class="fa-solid fa-plus"></i>
+        </button>
+        &nbsp;
+        <a href="{% url 'dashboard'%}" class=" btn btn-secondary">
+            Retour &nbsp; <i class="fa-solid fa-arrow-left"></i></a>
+
+
+    </form>
+
+</div>
+{% endblock %}

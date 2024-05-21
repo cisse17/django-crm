@@ -1,0 +1,36 @@
+{% extends 'webapp/base.html'%} 
+
+<!-- crispy_forms => for our input form | design -->
+{% load crispy_forms_tags %}
+
+{% block content %}
+<br>
+    <div class="container bg-light shadow-md p-5 form-register">
+        <h3>Creer votre compte </h3>
+        <hr>
+        <br>
+    
+        <form method="POST" autocomplete="off">
+    
+            {% csrf_token %}
+    
+            <!-- {{ form.as_p }} -->
+            {{ form.username|as_crispy_field }}
+            <br>
+            {{ form.password1|as_crispy_field }}
+            <br>
+            {{ form.password2|as_crispy_field }}
+            <br>
+            <button type="submit" class="btn btn-primary w-100 p-2"> S'inscrire &nbsp; <i class="fa-solid fa-user"></i></button>
+    
+        </form>
+        <br>
+    
+        <div class="text-center">
+            <p>Vous avez déja un compte ?</p><a href="{% url 'login' %}">Connectez-vous </a>
+        </div>
+    
+    </div>
+    <br>
+
+{% endblock %}

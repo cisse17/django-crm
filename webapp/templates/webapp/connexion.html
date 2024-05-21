@@ -1,0 +1,36 @@
+{% extends 'webapp/base.html'%}
+
+<!-- crispy_forms => for our input form | design -->
+{% load crispy_forms_tags %}
+
+{% block content %}
+<br>
+    <div class="container bg-light shadow-md p-5 form-register">
+        <h3>Connectez-vous à votre compte </h3>
+    
+        <hr>
+        <br>
+    
+        <form method="POST" autocomplete="off">
+    
+            {% csrf_token %}
+    
+            <!-- {{ form.as_p }} -->
+            <!-- {{ form|crispy }} -->
+            {{ form.username|as_crispy_field }}
+            <br>
+            {{ form.password|as_crispy_field }}
+            <br>
+            <button type="submit" class="btn btn-primary w-100 p-2"> Connecter &nbsp;<i class="fa-solid fa-key"></i> </button>
+    
+        </form>
+        <br>
+    
+        <div class="text-center">
+            <p>Vous n'avez pas de compte ?</p><a href="{% url 'register' %}">Creer votre compte</a>
+        </div>
+    
+    </div>
+    <br>
+
+{% endblock %}

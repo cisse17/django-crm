@@ -1,0 +1,47 @@
+{% extends 'webapp/base.html'%} 
+
+{% load crispy_forms_tags %}
+{% block content %}
+<br>
+<div class="container bg-light shadow-md p-5 form-register">
+    <h3>Enregister un nouveau client </h3>
+    
+    <h6>Start adding in the required details for your record  </h6>
+    <hr>
+    <br>
+
+    <form method="POST" autocomplete="off">
+
+        {% csrf_token %}
+
+        <!-- {{ form|crispy }}-->
+    
+        {{ form.prenom|as_crispy_field }}
+        <br>
+        {{ form.nom|as_crispy_field }}
+        <br>
+        {{ form.email|as_crispy_field }}
+        <br>
+        {{ form.telephone|as_crispy_field }}
+        <br>
+        {{ form.adresse|as_crispy_field }}
+        <br>
+        {{ form.ville|as_crispy_field }}
+        <br>
+        {{ form.province|as_crispy_field }}
+        <br>
+        {{ form.pays|as_crispy_field }}
+        <br>
+        <!-- <input type="submit" value="Enregistrer" class="btn btn-primary w-100 p-2"> -->
+        <button type="submit" class="btn btn-primary">
+             Enregistrer  &nbsp; <i class="fa-solid fa-check"></i>
+        </button>
+
+        <a href="{% url 'dashboard'%}" class=" btn btn-secondary">
+            Retour &nbsp; <i class="fa-solid fa-arrow-left"></i></a>
+
+    </form>
+
+</div>
+<br>
+{% endblock %}
